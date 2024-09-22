@@ -88,13 +88,11 @@ h2 {
 }
 
 .format {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: flex; 
+    justify-content: center; /* Center the buttons horizontally */
     margin-top: 10px;
-    width: 100%; /* Ensure it takes the full width */
-  }
-  
+    width: 100%; /* Ensure it takes the full width of its container */
+}
 
 
 /*
@@ -238,3 +236,4 @@ h2 {
 #delete-all-notes:hover {
     background-color: #c82333;
 }
+
