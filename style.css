@@ -72,7 +72,7 @@ h2 {
 
 #add-note button {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
     padding: 10px 20px;
     background-color: #777;
     color: #fff;
@@ -88,7 +88,7 @@ h2 {
 }
 
 .format {
-  display: inline-block; /* Changes from inline-flex to inline-block */
+  display: inline-flex; 
   margin-top: 10px;
   text-align: center; /* This will center the buttons */
 }
@@ -113,7 +113,7 @@ h2 {
   width: auto; /* Change from 100% to auto */
   margin: 10px auto; /* Center the button and add some spacing */
   padding: 10px 20px;
-  background-color: #007bff;
+  background-color: #007bff !important;
   color: #fff;
   border: none;
   border-radius: 4px;
