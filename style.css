@@ -190,3 +190,10 @@ h2 {
   justify-content: space-between; /* Ensure space between two columns when notes exist */
 }
 
+/* Gradient style for the welcome message */
+.gradient-welcome {
+  background: linear-gradient(to right, #00CED1, #0000ff 60%, #800080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
+}

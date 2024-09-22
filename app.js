@@ -14,17 +14,12 @@ let editIndex = null; // Track the index of the note being edited
 window.onload = function() {
     displayNotes();
     displayWelcome();
-
-    if (window.innerWidth <=768 && window.location.pathname!="/mobile.html") {
-        // Adjust the width as needed for your design
-        window.location.href="mobile.html";
-    }
 }
-/*
+
 // Save or Edit note in localStorage
 saveNoteBtn.addEventListener("click", function() {
-    const title = noteTitle.value.trim();
-    const body = noteBody.value.trim();
+    const title = noteTitle.value.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
+    const body = sanitizeNoteBody(noteBody.value.trim());
 
     if (title && body) {
         const note = { title, body };
@@ -47,55 +42,19 @@ saveNoteBtn.addEventListener("click", function() {
         alert("Please fill out both the title and note body.");
     }
 });
-*/
-
-function sanitizeHtml(input) {
-    // Create a temporary div to hold the input
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = input;
-
-    // Remove all child nodes that aren't <b>, <i>, or <u>
-    Array.from(tempDiv.childNodes).forEach(node => {
-        if (node.nodeType === 1 && !["B", "I", "U"].includes(node.tagName)) {
-            node.parentNode.removeChild(node);
-        }
-    });
-
-    return tempDiv.innerHTML;
-}
-
-// Save or Edit note in localStorage
-saveNoteBtn.addEventListener("click", function() {
-    const title = noteTitle.value.trim();
-    const body = noteBody.value.trim();
-
-    if (title && body) {
-        const note = { title, body: sanitizeHtml(body) }; // Sanitize body
-        let notes = JSON.parse(localStorage.getItem("notes")) || [];
-
-        if (editIndex === null) {
-            // Save new note
-            notes.push(note);
-        } else {
-            // Edit existing note
-            notes[editIndex] = note;
-            editIndex = null; // Reset edit mode
-        }
-
-        localStorage.setItem("notes", JSON.stringify(notes));
-        noteTitle.value = "";
-        noteBody.value = "";
-        displayNotes();
-    } else {
-        alert("Please fill out both the title and note body.");
-    }
-});
-
 
 // Display saved notes
 function displayNotes() {
     notesContainer.innerHTML = "";
     const notes = JSON.parse(localStorage.getItem("notes")) || [];
+    
+    if (notes.length === 0) {
+        document.getElementById("notes-list").style.display = "none";
+        document.getElementById("add-note").style.margin = "0 auto"; // Center add-note section
+    } else {
+        document.getElementById("notes-list").style.display = "block";
+        document.getElementById("add-note").style.margin = ""; // Reset margin when there are notes
+    }
     
     notes.forEach((note, index) => {
         const noteElement = document.createElement("div");
@@ -112,44 +71,48 @@ function displayNotes() {
     });
 }
 
-function decodeHtml(str) {
-    const textarea = document.createElement("textarea");
-    textarea.innerHTML = str;
-    return textarea.value;
-}
-
-
 // Edit a note
 function editNote(index) {
     const notes = JSON.parse(localStorage.getItem("notes")) || [];
     const note = notes[index];
 
-    noteTitle.value = decodeHtml(note.title);
+    noteTitle.value = note.title.replace(/&lt;/g, "<").replace(/&gt;/g, ">");
     noteBody.value = note.body;
     editIndex = index; // Set the index to edit mode
 }
 
 // Delete a note
+// Delete a note with confirmation
 function deleteNote(index) {
-    let notes = JSON.parse(localStorage.getItem("notes")) || [];
-    notes.splice(index, 1);
-    localStorage.setItem("notes", JSON.stringify(notes));
-    displayNotes();
+  const notes = JSON.parse(localStorage.getItem("notes")) || [];
+  const confirmDelete = confirm("Are you sure you want to delete this note?");
+
+  if (confirmDelete) {
+      notes.splice(index, 1);
+      localStorage.setItem("notes", JSON.stringify(notes));
+      displayNotes();
+  }
 }
 
 // Welcome text based on time of day
 function displayWelcome() {
-    let welcomeText = document.getElementById("welcome-text");
+    const welcomeText = document.getElementById("welcome-text");
+    const notes = JSON.parse(localStorage.getItem("notes")) || [];
     let hour = new Date().getHours();
-    
-    if (hour > 4 && hour < 12) {
-        welcomeText.innerHTML = "Good morning ☕";
-    } else if (hour < 17) {
-        welcomeText.innerHTML = "Good afternoon ☀️";
-    } else if (hour < 19) {
-        welcomeText.innerHTML = "Good evening 🌇";
+
+    if (notes.length === 0 && !welcomeText.classList.contains("loaded")) {
+        welcomeText.innerHTML = '<span class="gradient-welcome">Welcome to Newthings Notes</span>';
+        welcomeText.classList.add("loaded");
     } else {
-        welcomeText.innerHTML = "Good evening 🌙";
+        if (hour > 4 && hour < 12) {
+            welcomeText.innerHTML = "Good morning ☀️";
+        } else if (hour < 17) {
+            welcomeText.innerHTML = "Good afternoon 📝";
+        } else if (hour < 19) {
+            welcomeText.innerHTML = "Good evening 🌇";
+        } else {
+            welcomeText.innerHTML = "Good evening 🌙";
+        }
     }
 }
 
@@ -161,6 +124,20 @@ function wrapText(tag) {
     const selectedText = textarea.value.substring(start, end);
     const wrappedText = `<${tag}>${selectedText}</${tag}>`;
     textarea.setRangeText(wrappedText, start, end, 'end');
+}
+
+// Sanitize note body except for <b>, <i>, <u>
+function sanitizeNoteBody(body) {
+    return body
+        .replace(/<(?!\/?(b|i|u)\b)[^>]*>/g, "")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/&lt;b&gt;/g, "<b>")
+        .replace(/&lt;\/b&gt;/g, "</b>")
+        .replace(/&lt;i&gt;/g, "<i>")
+        .replace(/&lt;\/i&gt;/g, "</i>")
+        .replace(/&lt;u&gt;/g, "<u>")
+        .replace(/&lt;\/u&gt;/g, "</u>");
 }
 
 // Event listeners for formatting buttons
@@ -175,34 +152,3 @@ italicBtn.addEventListener("click", function() {
 underlineBtn.addEventListener("click", function() {
     wrapText("u");
 });
-
-
-
-function displayNotes() {
-  const notes = JSON.parse(localStorage.getItem("notes")) || [];
-  const twoColumnLayout = document.querySelector(".two-column-layout");
-
-  notesContainer.innerHTML = "";
-
-  if (notes.length === 0) {
-      twoColumnLayout.classList.add("centered"); // Center the left bar
-      twoColumnLayout.classList.remove("has-notes"); // Remove has-notes when there are no notes
-  } else {
-      twoColumnLayout.classList.remove("centered"); // Remove centering
-      twoColumnLayout.classList.add("has-notes"); // Show the notes section
-  }
-
-  notes.forEach((note, index) => {
-      const noteElement = document.createElement("div");
-      noteElement.classList.add("note");
-
-      noteElement.innerHTML = `
-          <h3>${note.title}</h3>
-          <p>${note.body}</p>
-          <button class="edit-note" onclick="editNote(${index})">Edit</button>
-          <button class="delete-note" onclick="deleteNote(${index})">Delete</button>
-      `;
-
-      notesContainer.appendChild(noteElement);
-  });
-}
