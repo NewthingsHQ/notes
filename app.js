@@ -16,7 +16,6 @@ window.onload = function() {
     displayWelcome();
 }
 
-// Save or Edit note in localStorage
 saveNoteBtn.addEventListener("click", function() {
     const title = noteTitle.value.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
     const body = sanitizeNoteBody(noteBody.value.trim());
@@ -28,6 +27,7 @@ saveNoteBtn.addEventListener("click", function() {
         if (editIndex === null) {
             // Save new note
             notes.push(note);
+            displayWelcome(); // Update the welcome text after adding a note
         } else {
             // Edit existing note
             notes[editIndex] = note;
@@ -42,6 +42,7 @@ saveNoteBtn.addEventListener("click", function() {
         alert("Please fill out both the title and note body.");
     }
 });
+
 
 // Display saved notes
 function displayNotes() {
@@ -82,7 +83,6 @@ function editNote(index) {
 }
 
 // Delete a note
-// Delete a note with confirmation
 function deleteNote(index) {
   const notes = JSON.parse(localStorage.getItem("notes")) || [];
   const confirmDelete = confirm("Are you sure you want to delete this note?");
@@ -100,18 +100,23 @@ function displayWelcome() {
     const notes = JSON.parse(localStorage.getItem("notes")) || [];
     let hour = new Date().getHours();
 
-    if (notes.length === 0 && !welcomeText.classList.contains("loaded")) {
-        welcomeText.innerHTML = '<span class="gradient-welcome">Welcome to Newthings Notes</span>';
-        welcomeText.classList.add("loaded");
-    } else {
-        if (hour > 4 && hour < 12) {
-            welcomeText.innerHTML = "Good morning ☀️";
-        } else if (hour < 17) {
-            welcomeText.innerHTML = "Good afternoon 📝";
-        } else if (hour < 19) {
-            welcomeText.innerHTML = "Good evening 🌇";
+    // Check if the page has just loaded
+    if (!welcomeText.classList.contains("loaded")) {
+        if (notes.length === 0) {
+            // Show welcome text if there are no notes
+            welcomeText.innerHTML = '<span class="gradient-welcome">Welcome to Newthings Notes</span>';
+            welcomeText.classList.add("loaded");
         } else {
-            welcomeText.innerHTML = "Good evening 🌙";
+            // Display time-based greeting if notes exist
+            if (hour > 4 && hour < 12) {
+                welcomeText.innerHTML = "Good morning ☀️";
+            } else if (hour < 17) {
+                welcomeText.innerHTML = "Good afternoon 📝";
+            } else if (hour < 19) {
+                welcomeText.innerHTML = "Good evening 🌇";
+            } else {
+                welcomeText.innerHTML = "Good evening 🌙";
+            }
         }
     }
 }
@@ -151,4 +156,17 @@ italicBtn.addEventListener("click", function() {
 
 underlineBtn.addEventListener("click", function() {
     wrapText("u");
+});
+
+// Select elements
+const deleteAllNotesBtn = document.getElementById("delete-all-notes");
+
+// Event listener for deleting all notes
+deleteAllNotesBtn.addEventListener("click", function() {
+    if (prompt("WARNING: This will delete ALL of your notes. This action is irreversible. To confirm, type \"DELETE\" in all caps.") == "DELETE") {
+        localStorage.removeItem("notes");
+        alert("Notes cleared successfully.");
+        displayWelcome();
+        displayNotes(); // Update display after deletion
+    }
 });

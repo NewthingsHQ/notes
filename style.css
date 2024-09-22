@@ -88,10 +88,12 @@ h2 {
 }
 
 .format {
-  display: inline-flex; 
-  margin-top: 10px;
-  text-align: center; /* This will center the buttons */
+    display: flex; 
+    justify-content: center; /* Center the buttons horizontally */
+    margin-top: 10px;
+    width: 100%; /* Ensure it takes the full width of its container */
 }
+
 
 /*
 .save {
@@ -192,8 +194,45 @@ h2 {
 
 /* Gradient style for the welcome message */
 .gradient-welcome {
-  background: linear-gradient(to right, #00CED1, #0000ff 60%, #800080);
+  background: linear-gradient(to right, #00b3b6, #0000ff 60%, #800080);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 500;
+}
+
+#delete-all-notes {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right; /* Align to the right */
+}
+
+#delete-all-notes:hover {
+    background-color: #c82333;
+}
+
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#delete-all-notes {
+    padding: 5px 10px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#delete-all-notes:hover {
+    background-color: #c82333;
 }
