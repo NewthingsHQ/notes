@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap');
+
+* {
+    font-family: "SUSE", 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+h1,
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/*
+input, textarea {
+    width: 100%;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    display: block;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-content:center;
+
+}
+    
+
+button:hover {
+    background-color: #45a049;
+}
+    */
+
+#notes-container {
+    margin-top: 20px;
+}
+
+.note {
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.note h3 {
+    margin-top: 0;
+}
+
+button.delete-note {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    /* Full width based on the body */
+    max-width: 600px;
+    /* Adjust the max width to balance out the size */
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+    /* Centers the input and textarea */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+textarea {
+    height: 300px;
+    resize: none;
+    /* Prevents resizing */
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    display: block;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

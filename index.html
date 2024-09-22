@@ -3,33 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="manifest" href="manifest.json">
     <title>Newthings Notes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="style.css">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="icon.png">
+    <script>
+        window.onload = function() {
+            if (window.innerWidth <= 768) { // Adjust the width as needed for your design
+                window.location.href = "mobile.html";
+            }
+        };
+    </script>
+    
 </head>
 <body>
-    <br><br><br>
-    <div style="height:20px"></div>
     <div class="container">
-        <h1 style="font-size:300%; font-weight:300; line-height: 50%;">Newthings Notes</h1> <!-- TODO: Change to Good morning/afternoon/evening -->
-        
-        <!-- Add Note Section -->
-        <div id="add-note">
-            <h2 style="font-size:x-large; font-weight:600">
-                Write a new note</h2>
-            <input type="text" id="note-title" placeholder="Title">
-            <textarea id="note-body" placeholder="Your note..."></textarea>
-            <button id="save-note">Save Note</button>
-        </div>
-        
-        <br><hr><br> <!-- TODO: Change to vertical layout -->
-
-        <!-- Display Notes Section -->
-        <div id="notes-list">
-            <h2>Saved Notes</h2>
-            <div id="notes-container"></div>
+        <div class="two-column-layout">
+            <!-- Add Note Section -->
+            <div id="add-note">
+                <h1 id="welcome-text">Welcome 👋</h1>
+                <h2>Write a new note</h2>
+                <input type="text" id="note-title" placeholder="Title">
+                <div id="format-buttons" class="format">
+                    <button id="bold-btn"><b>B</b></button> <div style="width:10px"></div>  
+                    <button id="italic-btn"><i>I</i></button> <div style="width:10px"></div> 
+                    <button id="underline-btn"><u>U</u></button>
+                </div>
+                <textarea id="note-body" placeholder="Your note..."></textarea>
+                <div style="height:5px"></div>
+                <button id="save-note" class="save">Save Note</button>
+            </div>
+            
+            <!-- Display Notes Section -->
+            <div id="notes-list">
+                <h2>Saved Notes</h2>
+                <div id="notes-container"></div>
+            </div>
         </div>
     </div>
 
