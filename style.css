@@ -150,3 +150,19 @@ h2 {
 .edit-note:hover {
     background-color: #0056b3;
 }
+
+.centered {
+  justify-content: center; /* Center content horizontally */
+}
+
+#notes-list {
+  display: none; /* Initially hide the right column */
+}
+
+.has-notes #notes-list {
+  display: block; /* Only show when there are saved notes */
+}
+
+.has-notes .two-column-layout {
+  justify-content: space-between; /* Ensure space between two columns when notes exist */
+}

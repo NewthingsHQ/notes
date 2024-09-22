@@ -176,3 +176,33 @@ underlineBtn.addEventListener("click", function() {
     wrapText("u");
 });
 
+
+
+function displayNotes() {
+  const notes = JSON.parse(localStorage.getItem("notes")) || [];
+  const twoColumnLayout = document.querySelector(".two-column-layout");
+
+  notesContainer.innerHTML = "";
+
+  if (notes.length === 0) {
+      twoColumnLayout.classList.add("centered"); // Center the left bar
+      twoColumnLayout.classList.remove("has-notes"); // Remove has-notes when there are no notes
+  } else {
+      twoColumnLayout.classList.remove("centered"); // Remove centering
+      twoColumnLayout.classList.add("has-notes"); // Show the notes section
+  }
+
+  notes.forEach((note, index) => {
+      const noteElement = document.createElement("div");
+      noteElement.classList.add("note");
+
+      noteElement.innerHTML = `
+          <h3>${note.title}</h3>
+          <p>${note.body}</p>
+          <button class="edit-note" onclick="editNote(${index})">Edit</button>
+          <button class="delete-note" onclick="deleteNote(${index})">Delete</button>
+      `;
+
+      notesContainer.appendChild(noteElement);
+  });
+}

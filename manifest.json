@@ -1,7 +1,6 @@
 {
     "name": "Newthings Notes",
     "short_name": "Notes",
-    "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#ffffff",
     "theme_color": "#0077ff"
