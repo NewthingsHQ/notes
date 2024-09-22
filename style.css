@@ -195,11 +195,25 @@ h2 {
 /* Gradient style for the welcome message */
 .gradient-welcome {
   background: linear-gradient(to right, #00b3b6, #0000ff 60%, #800080);
+  background-size: 100% 100%; 
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 500;
 }
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
 
 #delete-all-notes {
     margin-bottom: 10px;
@@ -237,3 +251,34 @@ h2 {
     background-color: #c82333;
 }
 
+
+.dark {
+    padding: 5px 10px;
+    background-color: #000000;
+    color: #fff;
+    border: 1px white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.dark:hover {
+    background-color: #222222;
+}
+
+
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.note dark-mode {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+}
+
+button dark-mode {
+    background-color: #333;
+    color: #ffffff;
+}
+
+/* Add more styles as needed */
