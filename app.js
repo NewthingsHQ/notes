@@ -133,9 +133,9 @@ function displayWelcome() {
     } else {
         // Display time-based greeting if notes exist
         if (hour > 4 && hour < 12) {
-            welcomeText.innerHTML = "Good morning ☀️";
+            welcomeText.innerHTML = "Good morning ☕️";
         } else if (hour < 17) {
-            welcomeText.innerHTML = "Good afternoon 📝";
+            welcomeText.innerHTML = "Good afternoon ☀️";
         } else if (hour < 19) {
             welcomeText.innerHTML = "Good evening 🌇";
         } else {
