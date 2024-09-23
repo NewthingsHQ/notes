@@ -22,7 +22,7 @@ function checkScreenSize() {
     if (window.innerWidth <= 800 && !(window.location.pathname.includes("mobile.html"))) {
         window.location.href = "mobile.html";
     } else if (window.innerWidth > 800 && (window.location.pathname.includes("mobile.html"))) {
-        window.location.href = ".."
+        window.location.href = "."
     }
 }
 
