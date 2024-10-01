@@ -251,6 +251,24 @@ h2 {
     background-color: #c82333;
 }
 
+#dark-btn {
+  padding: 5px 10px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#dark-btn:hover {
+  background-color: #222;
+}
+
+#dark-btn .dark-mode {
+  background-color: #ddd;
+  color: #000
+}
+
 /*
 .dark {
     padding: 5px 10px;
@@ -345,4 +363,8 @@ button dark-mode {
     font-size: 14px;
     color: rgba(0,0,0,1); /* Text color */
     z-index: 1000; /* Ensures it stays on top of other elements */
+}
+
+.bottom-left-text .dark-mode {
+  color: rgba(255,255,255,0.7)
 }
