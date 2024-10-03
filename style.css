@@ -253,7 +253,7 @@ h2 {
 }
 */
 
-#dark-btn {
+.dark-btn {
   /*
   padding: 5px 10px;
   background-color: #444;
@@ -273,11 +273,11 @@ h2 {
 
 }
 
-#dark-btn:hover {
+.dark-btn:hover {
   background-color: #222;
 }
 
-#dark-btn .dark-mode {
+.dark-btn .dark-mode {
   background-color: #ddd;
   color: #000
 }
