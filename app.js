@@ -18,6 +18,8 @@ window.onload = function () {
     displayWelcome();
 }
 
+/*
+TODO: TURN BACK ON WHEN MOBILE IS DONE
 function checkScreenSize() {
     if (window.innerWidth <= 800 && !(window.location.pathname.includes("mobile.html"))) {
         window.location.href = "mobile.html";
@@ -25,6 +27,7 @@ function checkScreenSize() {
         window.location.href = "."
     }
 }
+*/
 
 // Check on page load
 window.onload = function () {
@@ -224,7 +227,9 @@ deleteAllNotesBtn.addEventListener("click", function () {
         localStorage.setItem('developerTools', 'false'); // Save preference
         toggleDevTools(); // Hide dev tools elements
     }
-    
+    if (developerTools = 1) {
+        //if (todo: add later
+    }
 });
 
 // Load preference on page load
