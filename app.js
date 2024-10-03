@@ -224,6 +224,7 @@ deleteAllNotesBtn.addEventListener("click", function () {
         localStorage.setItem('developerTools', 'false'); // Save preference
         toggleDevTools(); // Hide dev tools elements
     }
+    
 });
 
 // Load preference on page load
