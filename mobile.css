@@ -125,7 +125,7 @@ h2 {
 #delete-all-notes {
     margin-bottom: 10px;
     padding: 5px 10px;
-    background-color: #dc3545;
+    background-color: #db2c3e;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -134,7 +134,7 @@ h2 {
 }
 
 #delete-all-notes:hover {
-    background-color: #c82333;
+    background-color: #b82231;
 }
 
 .header-container {
@@ -218,13 +218,13 @@ h2 {
 }
 
 .dark-mode #delete-all-notes {
-    background-color: #444;
+    background-color: #a00;
     color: #fff;
-    border: none;
+    border: solid 0 #fff;
 }
 
 .dark-mode #delete-all-notes:hover {
-    background-color: #555;
+    background-color: #700;
 }
 
 .bottom-left-text {
@@ -237,6 +237,6 @@ h2 {
     z-index: 1000;
 }
 
-.bottom-left-text .dark-mode {
+.dark-mode .bottom-left-text {
     color: rgba(255,255,255,0.7);
 }

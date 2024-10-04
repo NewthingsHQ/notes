@@ -44,25 +44,31 @@
         <div style="height:5px"></div>
         <button id="save-note" class="save">Save Note</button>
     </div>
-    <br><hr><br>
+
+    <br>
+    <hr><br>
+
     <div id="notes-list">
         <div id="notes-header" class="header-container">
-            <h2>Saved Notes</h2>
+            <div style="display:inline-flex">
+                <button id="toggle-notes" class="toggle-notes" style="padding:5px 12px; border: solid 0; border-radius: 7px;">▼</button><div style="width:10px"></div><h2 style="line-height: 0%; margin-bottom:20px">Saved Notes</h2>
+            </div>
+            <br>
             <div style="display:inline-flex">
                 <button id="toggle-dark-mode" class="dark-btn dev-only">Toggle Dark Mode</button>
                 <div style="width:10px"></div>
                 <button id="delete-all-notes" class="delete-all">Delete All Notes</button>
             </div>
         </div>
-        <div id="notes-container"></div>
+        <div id="notes-container" style="display:none"></div><br>
     </div>
 
-    <div class="bottom-left-text">
-        Newthings Notes - Insider Beta 3
+    <div class="bottom-left-text" id="watermark">
+        Newthings Notes
     </div>
 
 
-<!--
+    <!--
 <body>
     <br><br><br>
     <div class="container"><br><br>

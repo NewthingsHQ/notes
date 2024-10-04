@@ -8,7 +8,8 @@ const boldBtn = document.getElementById("bold-btn");
 const italicBtn = document.getElementById("italic-btn");
 const underlineBtn = document.getElementById("underline-btn");
 
-var developerTools = 0;
+var developerTools;
+var forceMobileView;
 
 let editIndex = null; // Track the index of the note being edited
 
@@ -29,6 +30,7 @@ function checkScreenSize() {
 }
 */
 
+
 // Check on page load
 window.onload = function () {
     checkScreenSize();
@@ -40,6 +42,10 @@ window.onload = function () {
 window.onresize = function () {
     checkScreenSize();
 };
+
+function showVersion() {
+    document.getElementById("watermark").innerHTML = `Newthings Notes - Insider Beta 3`;
+}
 
 
 saveNoteBtn.addEventListener("click", function () {
@@ -137,9 +143,9 @@ function displayWelcome() {
         // Display time-based greeting if notes exist
         if (hour > 4 && hour < 12) {
             welcomeText.innerHTML = "Good morning ☕️";
-        } else if (hour < 17) {
+        } else if (hour < 17 && hour > 4) {
             welcomeText.innerHTML = "Good afternoon ☀️";
-        } else if (hour < 19) {
+        } else if (hour < 19 && hour > 4) {
             welcomeText.innerHTML = "Good evening 🌇";
         } else {
             welcomeText.innerHTML = "Good evening 🌙";
@@ -228,10 +234,14 @@ deleteAllNotesBtn.addEventListener("click", function () {
         toggleDevTools(); // Hide dev tools elements
     }
     if (developerTools = 1) {
-        if (deletionPrompt === "devtools mobileview on") {
-            window.location.href = "mobile.html"
-        } else if (deletionPrompt === "devtools mobileview off") {
-            window.location.href = "."
+        if (developerTools == 1) {
+            if (deletionPrompt == "devtools mobileview on") {
+                alert("Mobile view enabled!");
+                window.location.href = "mobile.html"
+            } else if (deletionPrompt == "devtools mobileview off") {
+                alert("Mobile view disabled!");
+                window.location.href = "." 
+            }
         }
     }
 });
@@ -257,3 +267,25 @@ window.onload = function () {
     displayNotes();
     displayWelcome();
 };
+
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    showVersion();
+    
+    const toggleButton = document.getElementById('toggle-notes');
+    const notesContainer = document.getElementById('notes-container');
+
+    toggleButton.addEventListener('click', () => {
+        if (notesContainer.style.display === 'none' || notesContainer.style.display === '') {
+            notesContainer.style.display = 'block';
+            toggleButton.textContent = '▲';
+        } else {
+            notesContainer.style.display = 'none';
+            toggleButton.textContent = '▼';
+        }
+    });
+});
+
+function staffBuildAlert() {
+    alert("This build is a staff insider build. Please do not share this build with anyone outside of the Newthings team.");
+}
