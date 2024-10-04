@@ -204,6 +204,26 @@ h2 {
     background-color: #555;
 }
 
+.toggle-notes {
+    background-color: #444;
+    color: #ffffff;
+    border: none;
+}
+
+.toggle-notes:hover {
+    background-color: #555;
+}
+
+.dark-mode .toggle-notes button {
+    background-color: #444;
+    color: #ffffff;
+    border: none;
+}
+
+.dark-mode .toggle-notes:hover {
+    background-color: #555;
+}
+
 .dark-mode .note {
     background-color: #1e1e1e;
     border: 1px solid #333;

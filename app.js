@@ -270,8 +270,11 @@ window.onload = function () {
 
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    showVersion();
-    
+    // Check if the system setting is dark mode
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark-mode');
+    }
+
     const toggleButton = document.getElementById('toggle-notes');
     const notesContainer = document.getElementById('notes-container');
 
@@ -282,6 +285,44 @@ document.addEventListener('DOMContentLoaded', (event) => {
         } else {
             notesContainer.style.display = 'none';
             toggleButton.textContent = '▼';
+        }
+    });
+
+    window.onresize = function () {
+        checkScreenSize();
+    };
+
+    function showVersion() {
+        document.getElementById("watermark").innerHTML = "Newthings Notes - Insider Beta 3";
+    }
+
+    showVersion();
+
+    saveNoteBtn.addEventListener("click", function () {
+        const title = noteTitle.value.replace(/</g, "&lt;").replace(/>/g, "&gt;").trim();
+        const body = sanitizeNoteBody(noteBody.value.trim());
+
+        if (title && body) {
+            const note = { title, body };
+            let notes = JSON.parse(localStorage.getItem("notes")) || [];
+
+            if (editIndex === null) {
+                // Save new note
+                displayWelcome();
+                notes.push(note);
+                // Update the welcome text after adding a note
+            } else {
+                // Edit existing note
+                notes[editIndex] = note;
+                editIndex = null; // Reset edit mode
+            }
+
+            localStorage.setItem("notes", JSON.stringify(notes));
+            noteTitle.value = "";
+            noteBody.value = "";
+            displayNotes();
+        } else {
+            alert("Please fill out both the title and note body.");
         }
     });
 });
