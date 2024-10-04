@@ -268,15 +268,26 @@ window.onload = function () {
     displayWelcome();
 };
 
-
 document.addEventListener('DOMContentLoaded', (event) => {
-    // Check if the system setting is dark mode
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark-mode');
-    }
-
     const toggleButton = document.getElementById('toggle-notes');
     const notesContainer = document.getElementById('notes-container');
+
+    // Function to apply dark mode based on system preference
+    function applyDarkModePreference() {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+    }
+
+    // Initial check
+    applyDarkModePreference();
+
+    // Listen for changes in the system's color scheme
+    if (window.matchMedia) {
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', applyDarkModePreference);
+    }
 
     toggleButton.addEventListener('click', () => {
         if (notesContainer.style.display === 'none' || notesContainer.style.display === '') {
