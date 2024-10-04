@@ -216,19 +216,23 @@ deleteAllNotesBtn.addEventListener("click", function () {
         displayWelcome();
         displayNotes(); // Update display after deletion
         toggleDevTools(); // Update dev tool visibility
-    } else if (deletionPrompt === "enable devtools") {
+    } else if (deletionPrompt === "devtools enable") {
         alert("Devtools Enabled!");
         developerTools = 1;
         localStorage.setItem('developerTools', 'true'); // Save preference
         toggleDevTools(); // Show dev tools elements
-    } else if (deletionPrompt === "disable devtools") {
+    } else if (deletionPrompt === "devtools disable") {
         alert("Devtools Disabled!");
         developerTools = 0;
         localStorage.setItem('developerTools', 'false'); // Save preference
         toggleDevTools(); // Hide dev tools elements
     }
     if (developerTools = 1) {
-        //if (todo: add later
+        if (deletionPrompt === "devtools mobileview on") {
+            window.location.href = "mobile.html"
+        } else if (deletionPrompt === "devtools mobileview off") {
+            window.location.href = "."
+        }
     }
 });
 
