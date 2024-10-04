@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     };
 
     function showVersion() {
-        document.getElementById("watermark").innerHTML = "Newthings Notes - Insider Beta 3";
+        document.getElementById("watermark").innerHTML = "Newthings Notes - Public Beta 4";
     }
 
     showVersion();
