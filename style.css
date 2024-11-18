@@ -204,6 +204,11 @@ h2 {
 
 .dark-mode .gradient-welcome {
     background: linear-gradient(to right, #00e5e6, #5f7cff 60%, #b300b3) !important;
+     background-size: 100% 100%; 
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 500;
 }
 
 @keyframes gradientAnimation {
