@@ -203,7 +203,7 @@ h2 {
 }
 
 .dark-mode .gradient-welcome {
-    background: linear-gradient(to right, #00e5e6, #5f7cff 60%, #b300b3);
+    background: linear-gradient(to right, #00e5e6, #5f7cff 60%, #b300b3) !important;
 }
 
 @keyframes gradientAnimation {
