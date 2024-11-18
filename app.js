@@ -261,6 +261,8 @@ window.onload = function () {
     const darkModePreference = localStorage.getItem("darkMode");
     if (darkModePreference === "true") {
         document.body.classList.add("dark-mode");
+    } else {
+        document.body.classList.remove("dark-mode");
     }
     displayNotes();
     displayWelcome();
