@@ -202,6 +202,10 @@ h2 {
   font-weight: 500;
 }
 
+.dark-mode .gradient-welcome {
+    background: linear-gradient(to right, #00e5e6, #5f7cff 60%, #b300b3);
+}
+
 @keyframes gradientAnimation {
   0% {
     background-position: 0% 50%;
