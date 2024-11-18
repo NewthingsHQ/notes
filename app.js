@@ -19,8 +19,7 @@ window.onload = function () {
     displayWelcome();
 }
 
-/*
-TODO: TURN BACK ON WHEN MOBILE IS DONE
+
 function checkScreenSize() {
     if (window.innerWidth <= 800 && !(window.location.pathname.includes("mobile.html"))) {
         window.location.href = "mobile.html";
@@ -28,7 +27,6 @@ function checkScreenSize() {
         window.location.href = "."
     }
 }
-*/
 
 
 // Check on page load
