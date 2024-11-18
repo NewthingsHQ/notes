@@ -2,69 +2,74 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <title>Newthings Notes</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="apple-touch-icon" href="icon.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <title>Newthings Notes</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=SUSE:wght@100..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0" />
 
 </head>
 
 <body>
-    <div class="container" style="/*height:40px; overflow-x: auto; white-space: nowrap;*/ font-size:20px; text-align:center">
-      Newthings doesn't have any other webapps yet, but when we do, they will show up here. Stay tuned!
-    </div>
+  <div class="container"
+    style="/*height:40px; overflow-x: auto; white-space: nowrap;*/ font-size:20px; text-align:center">
+    Newthings doesn't have any other webapps yet, but when we do, they will show up here. Stay tuned!
+  </div>
 
-    <div class="container">
-        <div class="two-column-layout">
-            <!-- Add Note Section -->
-            <div id="add-note">
-                <h1 id="welcome-text">Welcome 👋</h1>
-                <h2>Write a new note</h2>
-                <input type="text" id="note-title" placeholder="Title">
-                <div id="format-buttons" class="format">
-                    <button id="bold-btn"><b>B</b></button>
-                    <div style="width:10px"></div>
-                    <button id="italic-btn"><i>I</i></button>
-                    <div style="width:10px"></div>
-                    <button id="underline-btn"><u>U</u></button>
-                </div>
-                <textarea id="note-body" placeholder="Your note..."></textarea>
-                <div style="height:5px"></div>
-                <button id="save-note" class="save">Save Note</button>
-            </div>
-
-            <!-- Display Notes Section -->
-            <div id="notes-list">
-                <div id="notes-header" class="header-container">
-                    <h2>Saved Notes</h2>
-                    <div style="display:inline-flex">
-                        <button id="toggle-dark-mode" class="dark-btn" style="height:30px;"><span class="material-symbols-outlined">dark_mode</span></button><div style="width:10px"></div><button id="delete-all-notes" class="delete-btn" style="line-height:0; height:30px;">
-    <span class="material-symbols-outlined">delete</span>Delete All Notes
-</button>
-
-                    
-                    </div>
-                </div>
-                <div id="notes-container"></div>
-            </div>
-
-            <div class="bottom-left-text" id="watermark">
-                Newthings Notes - Public Beta 4
-            </div>
-            
-
+  <div class="container">
+    <div class="two-column-layout">
+      <!-- Add Note Section -->
+      <div id="add-note">
+        <h1 id="welcome-text">Welcome 👋</h1>
+        <h2>Write a new note</h2>
+        <input type="text" id="note-title" placeholder="Title">
+        <div id="format-buttons" class="format">
+          <button id="bold-btn"><b>B</b></button>
+          <div style="width:10px"></div>
+          <button id="italic-btn"><i>I</i></button>
+          <div style="width:10px"></div>
+          <button id="underline-btn"><u>U</u></button>
         </div>
-    </div>
+        <textarea id="note-body" placeholder="Your note..."></textarea>
+        <div style="height:5px"></div>
+        <button id="save-note" class="save">Save Note</button>
+      </div>
 
-    <script src="app.js"></script>
+      <!-- Display Notes Section -->
+      <div id="notes-list">
+        <div id="notes-header" class="header-container">
+          <h2>Saved Notes</h2>
+          <div style="display:inline-flex">
+            <button id="toggle-dark-mode" class="dark-btn" style="height:30px;"><span
+                class="material-symbols-outlined">dark_mode</span></button>
+            <div style="width:10px"></div><button id="delete-all-notes" class="delete-btn"
+              style="line-height:0; height:30px;">
+              <span class="material-symbols-outlined">delete</span>Delete All Notes
+            </button>
+
+
+          </div>
+        </div>
+        <div id="notes-container"></div>
+      </div>
+
+      <div class="bottom-left-text" id="watermark">
+        Newthings Notes - Public Beta 4
+      </div>
+
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 
 </html>
