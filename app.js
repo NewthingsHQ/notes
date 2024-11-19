@@ -21,13 +21,15 @@ window.onload = function () {
 
 
 function checkScreenSize() {
+  if (screenWidth >= 800 && screenWidth <= 1000) {
+    welcomeText.style.fontSize = "2.5em";
+  }
   if (window.innerWidth <= 800 && !(window.location.pathname.includes("mobile.html"))) {
     window.location.href = "mobile.html";
   } else if (window.innerWidth > 800 && (window.location.pathname.includes("mobile.html"))) {
     window.location.href = "."
   }
 }
-
 
 // Check on page load
 window.onload = function () {
@@ -239,6 +241,10 @@ deleteAllNotesBtn.addEventListener("click", function () {
       } else if (deletionPrompt == "devtools mobileview off") {
         alert("Mobile view disabled!");
         window.location.href = "."
+      } else if (deletionPrompt == "devtools screensize") {
+        const screenWidth = window.innerWidth; // Get the screen width
+        const screenHeight = window.innerHeight; // Get the screen height
+        alert(`Width: ${screenWidth}px, Height: ${screenHeight}px`);
       }
     }
   }
