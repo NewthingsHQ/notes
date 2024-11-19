@@ -25,9 +25,9 @@ function checkScreenSize() {
     welcomeText.style.fontSize = "2.5em";
   }
   if (window.innerWidth <= 800 && !(window.location.pathname.includes("mobile.html"))) {
-    window.location.href = "mobile.html";
+    window.location.href = "https://notes.newthings.click/mobile.html";
   } else if (window.innerWidth > 800 && (window.location.pathname.includes("mobile.html"))) {
-    window.location.href = "."
+    window.location.href = "https://notes.newthings.click/"
   }
 }
 
